@@ -18,22 +18,11 @@ public class AnimalNonParameterizedTest {
 
     }
 
-    @Test
+    @Test(expected = Exception.class)
     public void getFoodForUnknownAnimalThrowsException() throws Exception {
 
         Animal animal = new Animal();
-        String expectedErrorMessage = "Неизвестный вид животного, используйте значение Травоядное или Хищник";
-
-        Exception exception = null;
-
-        try {
-            List<String> actual = animal.getFood("Недопустимое значение");
-        } catch (Exception ex) {
-            exception = ex;
-        }
-
-        Assert.assertNotNull(exception);
-        Assert.assertEquals(expectedErrorMessage, exception.getMessage());
+        List<String> actual = animal.getFood("Недопустимое значение");
 
     }
 

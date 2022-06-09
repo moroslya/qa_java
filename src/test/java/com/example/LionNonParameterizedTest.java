@@ -14,21 +14,11 @@ public class LionNonParameterizedTest {
     @Mock
     Feline feline;
 
-    @Test
+    @Test(expected = Exception.class)
     public void constructorForUnknownSexThrowsException() throws Exception {
 
         String expectedErrorMessage = "Используйте допустимые значения пола животного - самей или самка";
-
-        Exception exception = null;
-
-        try {
-            Lion lion = new Lion(feline, "Недопустимое значение");
-        } catch (Exception ex) {
-            exception = ex;
-        }
-
-        Assert.assertNotNull(exception);
-        Assert.assertEquals(expectedErrorMessage, exception.getMessage());
+        Lion lion = new Lion(feline, "Недопустимое значение");
 
     }
 
